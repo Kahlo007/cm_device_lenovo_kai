@@ -8,7 +8,8 @@ $(call inherit-product-if-exists, vendor/lenovo/kai/kai-vendor.mk)
 # Settings
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
-
+PRODUCT_DEVICE := kai
+PRODUCT_NAME := cm_kai
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/kai/overlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
