@@ -1,7 +1,6 @@
 USE_CAMERA_STUB := true
-TARGET_RECOVERY_UI_LIB := librecovery_ui_kai
+TARGET_RECOVERY_UI_LIB := librecovery_ui_grouper
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB = device/lenovo/kai/fstab.kai
 # inherit from the proprietary version
 -include vendor/lenovo/kai/BoardConfigVendor.mk
 # General Board settings
