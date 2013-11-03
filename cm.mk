@@ -9,7 +9,7 @@ TARGET_SCREEN_WIDTH := 800
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lenovo/kai/device_kai.mk)
+$(call inherit-product, device/lenovo/kai/full_kai.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := kai

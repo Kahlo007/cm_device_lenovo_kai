@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/lenovo/kai/kai-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/kai/device-vendor.mk)
 
 # Settings
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
@@ -20,15 +20,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=wifi-only
 
 # Kernel
-LOCAL_PATH := device/lenovo/kai
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+  LOCAL_KERNEL := kernel/tegra/arch/arm/boot/zImage
 else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_KERNEL):kernel
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -42,6 +41,11 @@ PRODUCT_COPY_FILES += \
     device/lenovo/kai/init.kai.rc:root/init.kai.rc \
     device/lenovo/kai/init.tf.rc:root/init.tf.rc \
     device/lenovo/kai/init.IdeaTabA2109A_board.usb.rc:root/init.IdeaTabA2109A_board.usb.rc
+
+ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcmdhd.ko
+endif
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \

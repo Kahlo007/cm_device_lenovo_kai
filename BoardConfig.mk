@@ -24,11 +24,32 @@ TARGET_BOOTLOADER_BOARD_NAME := kai
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/lenovo/kai/kernel
+TARGET_PREBUILT_KERNEL := device/lenovo/kai/zimage
+TARGET_KERNEL_SOURCE := kernel/lenovo/kai
+TARGET_KERNEL_CONFIG := tegra3_android_defconfig
 BOARD_HAS_NO_SELECT_BUTTON := true
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 BOARD_USES_GENERIC_INVENSENSE := false
 #ARCH_ARM_USE_NON_NEON_MEMCPY := true
+BOARD_SEPOLICY_DIRS += \
+	device/lenovo/kai/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	genfs_contexts \
+	app.te \
+	device.te \
+	drmserver.te \
+	file.te \
+	gpsd.te \
+	init_shell.te \
+	keystore.te \
+	mediaserver.te \
+	rild.te \
+	sensors_kai.te \
+	surfaceflinger.te \
+	system.te \
+	zygote.te
 
 # Turn on Cortex A9 Optimizations for A7
 TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9) $(call cc-option,-mcpu=cortex-a9)
