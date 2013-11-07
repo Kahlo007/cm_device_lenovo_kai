@@ -10,18 +10,18 @@ PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 PRODUCT_DEVICE := kai
 PRODUCT_NAME := cm_kai
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/kai/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/lenovo/kai/overlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15 \
+    wifi.supplicant_scan_interval=20 \
     tf.enable=y \
     drm.service.enabled=true \
     ro.carrier=wifi-only
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-  LOCAL_KERNEL := kernel/tegra/arch/arm/boot/zImage
+  LOCAL_KERNEL := device/lenovo/kai/zImage
 else
   LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
