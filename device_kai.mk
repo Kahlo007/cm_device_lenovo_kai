@@ -65,11 +65,11 @@ PRODUCT_COPY_FILES += \
     device/lenovo/kai/ft5x0x_ts.idc:system/usr/idc/ft5x0x_ts.idc \
     device/lenovo/kai/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
-# for bugmailer
-PRODUCT_PACKAGES += send_bug
-PRODUCT_COPY_FILES += \
-    system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-    system/extras/bugmailer/send_bug:system/bin/send_bug
+### for bugmailer
+##PRODUCT_PACKAGES += send_bug
+##PRODUCT_COPY_FILES += \
+##    system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+##    system/extras/bugmailer/send_bug:system/bin/send_bug
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

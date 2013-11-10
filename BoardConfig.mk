@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 TARGET_RECOVERY_UI_LIB := librecovery_ui_kai
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB = device/lenovo/kai/fstab.kai
+TARGET_RECOVERY_FSTAB := device/lenovo/kai/fstab.kai
 # inherit from the proprietary version
 -include vendor/lenovo/kai/BoardConfigVendor.mk
 # General Board settings
@@ -26,7 +26,7 @@ BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := device/lenovo/kai/zimage
 TARGET_KERNEL_SOURCE := kernel/lenovo/kai
-TARGET_KERNEL_CONFIG := tegra3_android_defconfig
+TARGET_KERNEL_CONFIG := tegra3_kai2_defconfig
 BOARD_HAS_NO_SELECT_BUTTON := true
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 BOARD_USES_GENERIC_INVENSENSE := false
