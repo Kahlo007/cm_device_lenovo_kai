@@ -12,15 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH:= $(call my-dir)
+
+LOCAL_PATH := $(call my-dir)
+
+# HAL module implemenation stored in
+# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 include $(CLEAR_VARS)
 
-LOCAL_C_INCLUDES := frameworks/native/cmds/dumpstate
-
-LOCAL_SRC_FILES := dumpstate.c
-
-LOCAL_MODULE := libdumpstate.kai
-
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_SRC_FILES := power.c
+LOCAL_MODULE := power.kai
 LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_STATIC_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)

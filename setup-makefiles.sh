@@ -510,15 +510,36 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := nvidia
 include \$(BUILD_PREBUILT)
 
-#include \$(CLEAR_VARS)
-#LOCAL_MODULE := libnvdispmgr_d
-#LOCAL_SRC_FILES := libnvdispmgr_d.so
-#LOCAL_MODULE_SUFFIX := .so
-#LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-#LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib
-#LOCAL_MODULE_TAGS := optional
-#LOCAL_MODULE_OWNER := nvidia
-#include \$(BUILD_PREBUILT)
+include \$(CLEAR_VARS)
+LOCAL_MODULE := libEGL_tegra_impl
+LOCAL_SRC_FILES := libEGL_tegra_impl.so
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib/egl
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := nvidia
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := libGLESv1_CM_tegra_impl
+LOCAL_SRC_FILES := libGLESv1_CM_tegra_impl.so
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib/egl
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := nvidia
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := libGLESv2_tegra_impl
+LOCAL_SRC_FILES := libGLESv2_tegra_impl.so
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib/egl
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := nvidia
+include \$(BUILD_PREBUILT)
+
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libnvmm
@@ -709,6 +730,16 @@ LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := nvidia
 include \$(BUILD_PREBUILT)
+
+#include \$(CLEAR_VARS)
+#LOCAL_MODULE := libnetcmdiface
+#LOCAL_SRC_FILES := libnetcmdiface.so
+#LOCAL_MODULE_SUFFIX := .so
+#LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+#LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib
+#LOCAL_MODULE_TAGS := optional
+#LOCAL_MODULE_OWNER := nvidia
+#include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libnvodm_imager
@@ -954,7 +985,6 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 
 # NVIDIA blob(s) necessary for kai hardware
 PRODUCT_PACKAGES := \\
-    
     nvavp_os_0ff00000 \\
     nvavp_vid_ucode \\
     nvavp_os_eff00000 \\
@@ -964,10 +994,14 @@ PRODUCT_PACKAGES := \\
     libEGL_tegra \\
     libGLESv1_CM_tegra \\
     libGLESv2_tegra \\
+    libEGL_tegra_impl \\
+    libGLESv1_CM_tegra_impl \\
+    libGLESv2_tegra_impl \\
     gralloc.tegra \\
     hwcomposer.tegra \\
     libardrv_dynamic \\
     libcgdrv \\
+##    libnetcmdiface \\
     libnvapputil \\
     libnvasfparserhal \\
     libnvaviparserhal \\
@@ -1422,9 +1456,13 @@ mv $KAIDIR/gpsconfig.xml $TARGET
 TARGET=../../../$OUTVENDOR/nvidia/$DEVICE/proprietary
 mv $KAIDIR/gralloc.tegra.so $TARGET
 mv $KAIDIR/hwcomposer.tegra.so $TARGET
-mv $KAIDIR/libEGL_tegra.so $TARGET
+cp blobs/libEGL_tegra.so $TARGET
+mv $KAIDIR/libEGL_tegra_impl.so $TARGET
 mv $KAIDIR/libGLESv1_CM_tegra.so $TARGET
+mv $KAIDIR/libGLESv1_CM_tegra_impl.so $TARGET
 mv $KAIDIR/libGLESv2_tegra.so $TARGET
+cp blobs/libGLESv2_tegra_impl.so $TARGET
+mv $KAIDIR/libEGL_tegra.so $TARGET
 mv $KAIDIR/libardrv_dynamic.so $TARGET
 mv $KAIDIR/libcgdrv.so $TARGET
 mv $KAIDIR/libnvapputil.so $TARGET
@@ -1434,14 +1472,14 @@ mv $KAIDIR/libnvavp.so $TARGET
 mv $KAIDIR/libnvcamerahdr.so $TARGET
 mv $KAIDIR/libnvddk_2d.so $TARGET
 mv $KAIDIR/libnvddk_2d_v2.so $TARGET
-#mv $KAIDIR/libnvdispmgr_d.so $TARGET
+##mv $KAIDIR/libnetcmdiface.so $TARGET
 mv $KAIDIR/libnvmm.so $TARGET
 mv $KAIDIR/libnvmm_audio.so $TARGET
 mv $KAIDIR/libnvmm_camera.so $TARGET
 mv $KAIDIR/libnvmm_contentpipe.so $TARGET
 mv $KAIDIR/libnvmm_image.so $TARGET
 mv $KAIDIR/libnvmm_manager.so $TARGET
-mv $KAIDIR/libnvmm_misc.so $TARGET
+cp blobs/libnvmm_misc.so $TARGET
 mv $KAIDIR/libnvmm_parser.so $TARGET
 mv $KAIDIR/libnvmm_service.so $TARGET
 mv $KAIDIR/libnvmm_utils.so $TARGET
@@ -1480,7 +1518,7 @@ mv $KAIDIR/nvram_4330.txt $TARGET
 # WIDEVINE
 TARGET=../../../$OUTVENDOR/widevine/$DEVICE/proprietary
 mv $KAIDIR/libWVStreamControlAPI_L1.so $TARGET
-mv $KAIDIR/libdrmdecrypt.so $TARGET
+cp blobs/libdrmdecrypt.so $TARGET
 mv $KAIDIR/libwvdrm_L1.so $TARGET
 #INVENSENSE
 TARGET=../../../$OUTVENDOR/invensense/$DEVICE/proprietary
@@ -1488,6 +1526,6 @@ mv $KAIDIR/libinvensense_hal.so $TARGET
 mv $KAIDIR/libmllite.so $TARGET
 mv $KAIDIR/libmplmpu.so $TARGET
 #LENOVO
-TARGET=../../../$OUTVENDOR/lenovo/$DEVICE/proprietary
-mv $KAIDIR/sensors.kai.so $TARGET
-mv $KAIDIR/lights.kai.so $TARGET
+#TARGET=../../../$OUTVENDOR/lenovo/$DEVICE/proprietary
+#mv $KAIDIR/sensors.kai.so $TARGET
+#mv $KAIDIR/lights.kai.so $TARGET

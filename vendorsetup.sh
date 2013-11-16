@@ -21,4 +21,7 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo cm_kai-eng
+add_lunch_combo cm_kai-userdebug
+add_lunch_combo cm_kai-release
+
 

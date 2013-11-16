@@ -29,5 +29,6 @@ for FILE in `cat proprietary-blobs.txt | grep -v "^#"`; do
 #    adb pull $FILE $BASE$FILE
     adb pull $FILE $BASE/
 done
-
 ./setup-makefiles.sh
+echo
+echo "  - extract Kai-blobs done! -"

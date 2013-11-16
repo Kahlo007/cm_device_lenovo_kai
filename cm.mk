@@ -21,5 +21,5 @@ PRODUCT_MANUFACTURER := Lenovo
 # Don't restrict vendor folder
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-#Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=cm_kai BUILD_FINGERPRINT="lenovo/cm_kai/a2109a:4.3/JWR66V/000001:userdebug/test-keys" PRIVATE_BUILD_DESC="cm_kai-userdebug 4.3 JWR66V 000001 test-keys"
+##Set build fingerprint / ID / Product Name ect.
+##PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=cm_kai BUILD_FINGERPRINT="lenovo/cm_kai/a2109a:4.3/JWR66V/000001:userdebug/test-keys" PRIVATE_BUILD_DESC="cm_kai-userdebug 4.3 JWR66V 000001 test-keys"

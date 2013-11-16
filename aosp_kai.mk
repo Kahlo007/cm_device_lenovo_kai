@@ -13,6 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(call inherit-product, device/asus/grouper/full_kai.mk)
+$(call inherit-product, device/lenovo/kai/full_kai.mk)
 
 PRODUCT_NAME := aosp_kai

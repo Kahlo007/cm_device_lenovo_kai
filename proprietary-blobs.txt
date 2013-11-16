@@ -30,8 +30,11 @@
 /system/etc/nvcamera.conf
 /system/etc/nvram_4330.txt
 /system/lib/egl/libEGL_tegra.so
+/system/lib/egl/libEGL_tegra_impl.so
 /system/lib/egl/libGLESv1_CM_tegra.so
+/system/lib/egl/libGLESv1_CM_tegra_impl.so
 /system/lib/egl/libGLESv2_tegra.so
+/system/lib/egl/libGLESv1_CM_tegra_impl.so
 /system/lib/hw/camera.tegra.so
 /system/lib/hw/gps.tegra.so
 /system/lib/hw/gralloc.tegra.so
@@ -44,6 +47,7 @@
 /system/lib/libinvensense_hal.so
 /system/lib/libmllite.so
 /system/lib/libmplmpu.so
+##/system/lib/libnetcmdiface.so
 /system/lib/libnvapputil.so
 /system/lib/libnvasfparserhal.so
 /system/lib/libnvaviparserhal.so
